@@ -21,7 +21,7 @@ const LandingPage = () => {
 
     const handleClose = () => setShowForm(false);
     const fetchJobs = () => {
-        axios.get('http://localhost:5000/api/jobs')
+        axios.get(https://jobmanagement-lfij.onrender.com/api/jobs')
             .then((res) => {
                 console.log("Fetched jobs:", res.data);
                 setJobs(res.data)
