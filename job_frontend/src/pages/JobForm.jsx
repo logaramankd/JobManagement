@@ -57,7 +57,7 @@ const JobForm = ({ handleClose, refreshJobs }) => {
     });
     const onSubmit = async (data) => {
         try {
-            await axios.post("http://localhost:5000/api/jobs", data);
+            await axios.post("https://jobmanagement-lfij.onrender.com/api/jobs", data);
             reset();
             refreshJobs();
             handleClose();
