@@ -23,4 +23,4 @@ class Job extends Model {
         }
     }
 }
-module.exports=Job
+module.exports = Job
