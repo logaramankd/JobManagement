@@ -13,7 +13,7 @@ app.use('/api', jobRoutes);
 app.get('/migrate', async (req, res) => {
     try {
         const Knex = require('knex');
-        const config = require('./knexfile.js');
+        const config = require('../knexfile');
         const knex = Knex(config.production);
 
         await knex.migrate.latest();
