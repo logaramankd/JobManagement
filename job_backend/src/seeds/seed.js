@@ -11,7 +11,7 @@ exports.seed = async function (knex) {
     {
       job_title: 'Full Stack Developer',
       company_name: 'Amazon',
-      location: 'Benagluru',
+      location: 'Bengaluru',
       job_type: 'Full-time',
       salary_min: 0,
       salary_max: 1200000,
