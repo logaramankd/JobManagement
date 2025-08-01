@@ -26,10 +26,11 @@ const CustomMenus = styled(MenuItem)(() => ({
     color: "black"
 }));
 
-const Header = () => {
+const Header = ({ handleOpen, filters, onFilterChange }) => {
     const [value, setvalue] = useState([10, 90000]);
     const handleChange = (event, newvalue) => {
-        setvalue(newvalue)
+        setvalue(newvalue);
+        onFilterChange("salaryRange", newvalue);
     }
     const salary = (num) => {
         return num >= 1000 ? `${Math.floor(num / 1000)}k` : num;
@@ -59,7 +60,10 @@ const Header = () => {
                     </div>
 
                     <div className="button-tag">
-                        <button className='createbtn'>Create Jobs</button>
+                        <button className='createbtn' onClick={() => {
+                            console.log("JOb Test");
+                            handleOpen();
+                        }}>Create Jobs</button>
                     </div>
                 </div>
             </nav>
@@ -83,6 +87,8 @@ const Header = () => {
                     <input
                         type="text"
                         placeholder="Search By Job Title, Role"
+                        value={filters.search}
+                        onChange={(e) => onFilterChange('search', e.target.value)}
                     />
                 </div>
                 <div className="filters"
@@ -103,7 +109,8 @@ const Header = () => {
                         }} />
                     <FormControl sx={{ width: '200px' }}>
                         <Select
-
+                            value={filters.location}
+                            onChange={(e) => onFilterChange('location', e.target.value)}
                             IconComponent={DropdownIcon}
                             displayEmpty
                             sx={{
@@ -126,9 +133,9 @@ const Header = () => {
                                 }
                             }}
                         >
-                            <CustomMenus    
+                            <CustomMenus
                                 sx={{ display: "none" }}>
-                               
+
                                 <em style={{ color: "grey", fontStyle: "normal" }} >Preferred Location</em>
                             </CustomMenus>
                             <CustomMenus value="All Locations">All Locations</CustomMenus>
@@ -157,6 +164,8 @@ const Header = () => {
                         }} />
                     <FormControl sx={{ width: '200px' }}>
                         <Select
+                            value={filters.job_type}
+                            onChange={(e) => onFilterChange('job_type', e.target.value)}
                             IconComponent={DropdownIcon}
                             displayEmpty
                             sx={{
@@ -189,10 +198,11 @@ const Header = () => {
                                     Job Type
                                 </em>
                             </CustomMenus>
-                            <CustomMenus value="Full Time">Full Time</CustomMenus>
                             <CustomMenus value="Internship">Internship</CustomMenus>
-                            <CustomMenus value="Part Time">Part Time</CustomMenus>
+                            <CustomMenus value="Full-time">Full-time</CustomMenus>
+                            <CustomMenus value="Part-time">Part-time</CustomMenus>
                             <CustomMenus value="Contract">Contract</CustomMenus>
+
                         </Select>
                     </FormControl>
                 </div>
